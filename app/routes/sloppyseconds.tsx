@@ -4,14 +4,14 @@ import type { Resource } from "~/types";
 
 const resources: Resource[] = [
   {
-    text: "Instagram",
-    icon: <Instagram />,
-    href: "",
-  },
-  {
     text: "Twitter (X)",
     icon: <Twitter />,
-    href: "",
+    href: "https://x.com/_2svintage",
+  },
+  {
+    text: "Instagram",
+    icon: <Instagram />,
+    href: "https://www.instagram.com/_2svintage",
   },
 ];
 
