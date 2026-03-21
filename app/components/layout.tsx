@@ -1,15 +1,20 @@
 import { Link } from "react-router";
-import { Instagram, Twitter, WorldStar } from "~/components/icons";
 import type { Resource } from "~/types";
 
-export default function Red() {
+export default function Layout({
+  resources,
+  title,
+}: {
+  resources: Resource[];
+  title?: string;
+}) {
   return (
     <main className="flex items-center justify-center pt-16 pb-4">
       <div className="flex-1 flex flex-col items-center gap-16 min-h-0">
         <div className="max-w-75 w-full space-y-6 px-4">
           <nav className="rounded-3xl border border-gray-200 p-6 dark:border-gray-700 space-y-4">
             <p className="leading-6 text-black dark:text-gray-200 text-center">
-              RED
+              {title}
             </p>
             <ul>
               {resources.map(({ href, text, icon, textColor, blank }) => (
@@ -46,22 +51,3 @@ export default function Red() {
     </main>
   );
 }
-
-const resources: Resource[] = [
-  {
-    text: "TRIP Party",
-    href: "https://tix.africa/discover/takeatrip",
-    icon: <WorldStar />,
-    textColor: "text-red-500",
-  },
-  {
-    href: "https://x.com/wear3red",
-    text: "Twitter (X)",
-    icon: <Twitter />,
-  },
-  {
-    href: "https://www.instagram.com/wear3red",
-    text: "Instagram",
-    icon: <Instagram />,
-  },
-];
