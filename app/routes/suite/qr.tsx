@@ -86,7 +86,7 @@ const Qr = () => {
         </div>
 
         {/* Preview */}
-        <div className="rounded bg-gray-800 p-8 md:w-1/2 m-auto">
+        <div className="rounded bg-gray-800 p-8 w-full md:w-1/2 m-auto">
           {code ? (
             <img onClick={copyCode} src={code} className="w-full rounded-lg" />
           ) : (
