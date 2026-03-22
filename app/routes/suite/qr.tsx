@@ -56,15 +56,12 @@ const Qr = () => {
     a.remove();
   };
 
-  const contentUpdated = debounce(handleContentUpdate, 1000);
+  const contentUpdated = debounce(handleContentUpdate, 500);
+  const copy = debounce(copyCode, 200);
 
   useEffect(() => {
     contentUpdated();
   }, [content, lightColor, darkColor]);
-
-  // useEffect(() => {
-  //   handleContentUpdate();
-  // }, [lightColor, darkColor])
 
   return (
     <>
@@ -89,7 +86,7 @@ const Qr = () => {
         {/* Preview */}
         <div className="rounded bg-gray-800 p-8 w-full md:w-1/2 m-auto">
           {code ? (
-            <img onClick={copyCode} src={code} className="w-full rounded-lg" />
+            <img onClick={copy} src={code} className="w-full rounded-lg" />
           ) : (
             <>
               <BsQrCode className="w-full text-[120px]" />
@@ -118,7 +115,7 @@ const Qr = () => {
                 Save
               </button>
               <button
-                onClick={copyCode}
+                onClick={copy}
                 className="px-4 py-2 bg-white text-black rounded cursor-pointer"
               >
                 Copy
