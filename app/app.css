@@ -22,7 +22,7 @@ body {
 
 @layer components {
   .container {
-    @apply m-auto min-w-full p-16;
+    @apply m-auto min-w-full p-4 sm:p-16;
   }
   .card {
     @apply p-4 duration-100 rounded-lg dark:bg-gray-800 hover:scale-110;
