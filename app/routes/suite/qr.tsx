@@ -6,6 +6,7 @@ import { debounce } from "~/utils";
 const Qr = () => {
   const [content, setContent] = useState<string | undefined>();
   const [code, setCode] = useState<string | undefined>();
+  const [darkMode, setDarkMode] = useState(false);
 
   const handleContentUpdate = async () => {
     if (!content || content.trim().length < 1) {
@@ -17,6 +18,10 @@ const Qr = () => {
       version: 5,
       errorCorrectionLevel: "M",
       type: "image/jpeg",
+      color: {
+        dark: darkMode ? "#fff" : "#000",
+        light: darkMode ? "#000" : "#fff",
+      },
     });
     setCode(() => code);
   };
@@ -35,24 +40,35 @@ const Qr = () => {
 
   useEffect(() => {
     contentUpdated();
-  }, [content]);
+  }, [content, darkMode]);
 
   return (
     <>
       <div className="grid md:grid-cols-2 gap-x-4">
-        <form>
-          <div className="form-group">
-            <label>Content</label>
-            <textarea
-              onChange={(e) => {
-                setContent(e.target.value);
-              }}
-              className="form-control resize-y"
-              rows={5}
-              placeholder="Enter your content here"
-            ></textarea>
-          </div>
-        </form>
+        <div>
+          <form>
+            <div className="form-group">
+              <label>Content</label>
+              <textarea
+                onChange={(e) => {
+                  setContent(e.target.value);
+                }}
+                className="form-control resize-y"
+                rows={5}
+                placeholder="Enter your content here"
+              ></textarea>
+            </div>
+          </form>
+
+          <button
+            onClick={() => {
+              setDarkMode((prev) => !prev);
+            }}
+            className="px-3 py-1 rounded bg-blue-500 text0white"
+          >
+            Dark Mode
+          </button>
+        </div>
 
         {/* Preview */}
         <div className="rounded bg-gray-800 p-8 md:w-1/2 m-auto">
