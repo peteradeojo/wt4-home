@@ -1,4 +1,4 @@
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import QRCode from "qrcode";
 import { useEffect, useState } from "react";
 import { BsQrCode } from "react-icons/bs";
@@ -68,6 +68,7 @@ const Qr = () => {
 
   return (
     <>
+      <Toaster />
       <div className="grid md:grid-cols-2 gap-x-4">
         <div>
           <form>
