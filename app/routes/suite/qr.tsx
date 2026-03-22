@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import QRCode from "qrcode";
 import { useEffect, useState } from "react";
 import { BsQrCode } from "react-icons/bs";
@@ -18,13 +19,31 @@ const Qr = () => {
     const code = await QRCode.toDataURL(content.trim(), {
       version: 5,
       errorCorrectionLevel: "M",
-      type: "image/jpeg",
+      type: "image/png",
       color: {
         dark: darkColor, // darkMode ? "#fff" : "#000",
         light: lightColor, // darkMode ? "#000" : "#fff",
       },
     });
     setCode(() => code);
+  };
+
+  const copyCode = async () => {
+    if (!code) return;
+
+    try {
+      const res = await fetch(code);
+      const blob = await res.blob();
+      const item = new ClipboardItem({
+        [blob.type]: blob,
+      });
+      await navigator.clipboard.write([item]);
+      console.log("Copied");
+      toast.success("Copied!");
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred");
+    }
   };
 
   const saveCode = () => {
@@ -69,7 +88,7 @@ const Qr = () => {
         {/* Preview */}
         <div className="rounded bg-gray-800 p-8 md:w-1/2 m-auto">
           {code ? (
-            <img src={code} className="w-full rounded-lg" />
+            <img onClick={copyCode} src={code} className="w-full rounded-lg" />
           ) : (
             <>
               <BsQrCode className="w-full text-[120px]" />
@@ -96,6 +115,12 @@ const Qr = () => {
                 className="px-4 py-2 bg-blue-500 text-white rounded cursor-pointer"
               >
                 Save
+              </button>
+              <button
+                onClick={copyCode}
+                className="px-4 py-2 bg-white text-black rounded cursor-pointer"
+              >
+                Copy
               </button>
             </div>
           ) : null}
