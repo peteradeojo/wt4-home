@@ -6,7 +6,8 @@ import { debounce } from "~/utils";
 const Qr = () => {
   const [content, setContent] = useState<string | undefined>();
   const [code, setCode] = useState<string | undefined>();
-  const [darkMode, setDarkMode] = useState(false);
+  const [lightColor, setLightColor] = useState("#ffffff");
+  const [darkColor, setDarkColor] = useState("#000000");
 
   const handleContentUpdate = async () => {
     if (!content || content.trim().length < 1) {
@@ -19,8 +20,8 @@ const Qr = () => {
       errorCorrectionLevel: "M",
       type: "image/jpeg",
       color: {
-        dark: darkMode ? "#fff" : "#000",
-        light: darkMode ? "#000" : "#fff",
+        dark: darkColor, // darkMode ? "#fff" : "#000",
+        light: lightColor, // darkMode ? "#000" : "#fff",
       },
     });
     setCode(() => code);
@@ -40,7 +41,11 @@ const Qr = () => {
 
   useEffect(() => {
     contentUpdated();
-  }, [content, darkMode]);
+  }, [content, lightColor, darkColor]);
+
+  // useEffect(() => {
+  //   handleContentUpdate();
+  // }, [lightColor, darkColor])
 
   return (
     <>
@@ -59,15 +64,6 @@ const Qr = () => {
               ></textarea>
             </div>
           </form>
-
-          <button
-            onClick={() => {
-              setDarkMode((prev) => !prev);
-            }}
-            className="px-3 py-1 rounded bg-blue-500 text0white"
-          >
-            Dark Mode
-          </button>
         </div>
 
         {/* Preview */}
@@ -81,7 +77,20 @@ const Qr = () => {
           )}
 
           {code ? (
-            <div className="text-center pt-4">
+            <div className="text-center pt-4 grid gap-4">
+              <div>
+                <input
+                  type="color"
+                  value={lightColor}
+                  onChange={(e) => setLightColor(e.target.value)}
+                />
+                <input
+                  type="color"
+                  value={darkColor}
+                  onChange={(e) => setDarkColor(e.target.value)}
+                />
+              </div>
+
               <button
                 onClick={saveCode}
                 className="px-4 py-2 bg-blue-500 text-white rounded cursor-pointer"
