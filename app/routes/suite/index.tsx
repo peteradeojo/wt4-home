@@ -18,7 +18,7 @@ const Suite = () => {
       <main className="container">
         <section id="suite">
           {match !== null ? (
-            <div className="grid gap-9 grid-cols-3 md:grid-cols-6 w-full">
+            <div className="grid gap-9 sm:grid-cols-3 md:grid-cols-6 w-full">
               {projects.map(({ text, href, description }, i) => (
                 <Link to={href} className="card" key={i}>
                   {text}
