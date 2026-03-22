@@ -6,7 +6,7 @@
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-::root {
+:root {
   scroll-behavior: smooth;
   box-sizing: border-box;
 }
