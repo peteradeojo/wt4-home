@@ -5,6 +5,6 @@ export const loader = async (params: Route.LoaderArgs) => {
   return redirect("https://tix.africa/discover/takeatrip");
 };
 
-export default function Membership() {
-  return <></>;
-}
+// export default function Membership() {
+//   return <></>;
+// }

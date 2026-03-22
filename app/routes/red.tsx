@@ -1,10 +1,15 @@
-import { Link } from "react-router";
 import { Instagram, Twitter, WorldStar } from "~/components/icons";
 import Layout from "~/components/layout";
 import type { Resource } from "~/types";
+import target from "~/assets/target.svg";
 
 export default function Red() {
-  return <Layout resources={resources} title="R E D" />;
+  return (
+    <Layout
+      resources={resources}
+      title={<img src={target} className="w-20 m-auto" />}
+    />
+  );
 }
 
 const resources: Resource[] = [

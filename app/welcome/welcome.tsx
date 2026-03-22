@@ -1,3 +1,4 @@
+import { BsTools } from "react-icons/bs";
 import { WorldStar } from "~/components/icons";
 import Layout from "~/components/layout";
 import type { Resource } from "~/types";
@@ -20,5 +21,12 @@ const resources: Resource[] = [
     textColor: "text-green-500",
     blank: false,
     icon: <WorldStar />,
+  },
+  {
+    href: "/suite",
+    text: "WT4 Suite",
+    // textColor: "text-green-500",
+    blank: false,
+    icon: <BsTools />,
   },
 ];

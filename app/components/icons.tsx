@@ -6,9 +6,9 @@ export const WorldStar = () => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     className="icon icon-tabler icons-tabler-outline icon-tabler-world-star"
   >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -28,9 +28,9 @@ export const Twitter = () => (
     height="24"
     viewBox="0 0 24 24"
     stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     className="icon icon-tabler icons-tabler-outline icon-tabler-brand-x stroke-black fill-white dark:stroke-white dark:fill-black"
   >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -47,9 +47,9 @@ export const Instagram = () => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     className="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram stroke-black fill-white dark:stroke-white dark:fill-black"
   >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -57,4 +57,34 @@ export const Instagram = () => (
     <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
     <path d="M16.5 7.5v.01" />
   </svg>
+);
+
+export const BackIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-left-to-arc stroke-black dark:stroke-white"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M21 12h-12" />
+    <path d="M13 16l-4 -4l4 -4" />
+    <path d="M12 3a9 9 0 1 0 0 18" />
+  </svg>
+);
+
+export const BackLink = () => (
+  <span
+    onClick={() => history.back()}
+    className={`group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500 cursor-pointer`}
+  >
+    <BackIcon />
+    Go Back
+  </span>
 );

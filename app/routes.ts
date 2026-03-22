@@ -12,4 +12,8 @@ export default [
     route("/membership", "routes/membership.tsx"),
     index("routes/red.tsx"),
   ]),
+
+  route("suite", "routes/suite/index.tsx", [
+    route("qr", "routes/suite/qr.tsx"),
+  ]),
 ] satisfies RouteConfig;

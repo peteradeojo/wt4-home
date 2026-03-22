@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+::root {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 html,
@@ -11,5 +17,18 @@ body {
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
+  }
+}
+
+@layer components {
+  .container {
+    @apply m-auto min-w-full p-16;
+  }
+  .card {
+    @apply p-4 duration-100 rounded-lg dark:bg-gray-800 hover:scale-110;
+  }
+
+  .form-control {
+    @apply w-full bg-gray-700 text-white focus:outline-1 outline-amber-50 p-2;
   }
 }
