@@ -1,5 +1,5 @@
 import QRCode from "qrcode";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { debounce } from "~/utils";
 
 const Qr = () => {
@@ -8,7 +8,7 @@ const Qr = () => {
 
   const handleContentUpdate = async () => {
     if (!content || content.trim().length < 1) {
-      setCode(undefined);
+      setCode((prev) => undefined);
       return;
     }
     
@@ -17,7 +17,7 @@ const Qr = () => {
       errorCorrectionLevel: "M",
       type: "image/jpeg",
     });
-    setCode(code);
+    setCode(() => code);
   };
 
   const saveCode = () => {
@@ -32,6 +32,10 @@ const Qr = () => {
 
   const contentUpdated = debounce(handleContentUpdate, 1000);
 
+  useEffect(() => {
+    contentUpdated();
+  }, [content]);
+
   return (
     <>
       <div className="grid md:grid-cols-2 gap-x-4">
@@ -41,7 +45,7 @@ const Qr = () => {
             <textarea
               onChange={(e) => {
                 setContent(e.target.value);
-                contentUpdated();
+                // contentUpdated();
               }}
               className="form-control resize-y"
               rows={5}
