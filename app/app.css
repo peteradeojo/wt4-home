@@ -25,7 +25,7 @@ body {
     @apply m-auto min-w-full p-4 sm:p-16;
   }
   .card {
-    @apply p-4 duration-100 rounded-lg dark:bg-gray-800 hover:scale-110;
+    @apply p-4 duration-100 rounded-lg dark:bg-gray-800 hover:scale-[105%] grid place-items-center gap-y-2 md:gap-y-4;
   }
 
   .form-control {

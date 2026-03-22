@@ -1,5 +1,6 @@
 import QRCode from "qrcode";
 import { useEffect, useState } from "react";
+import { BsQrCode } from "react-icons/bs";
 import { debounce } from "~/utils";
 
 const Qr = () => {
@@ -11,7 +12,7 @@ const Qr = () => {
       setCode((prev) => undefined);
       return;
     }
-    
+
     const code = await QRCode.toDataURL(content.trim(), {
       version: 5,
       errorCorrectionLevel: "M",
@@ -45,7 +46,6 @@ const Qr = () => {
             <textarea
               onChange={(e) => {
                 setContent(e.target.value);
-                // contentUpdated();
               }}
               className="form-control resize-y"
               rows={5}
@@ -56,7 +56,13 @@ const Qr = () => {
 
         {/* Preview */}
         <div className="rounded bg-gray-800 p-8 md:w-1/2 m-auto">
-          <img src={code} className="w-full rounded-lg" />
+          {code ? (
+            <img src={code} className="w-full rounded-lg" />
+          ) : (
+            <>
+              <BsQrCode className="w-full text-[120px]" />
+            </>
+          )}
 
           {code ? (
             <div className="text-center pt-4">

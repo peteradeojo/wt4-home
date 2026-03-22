@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 export const WorldStar = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -79,12 +81,24 @@ export const BackIcon = () => (
   </svg>
 );
 
-export const BackLink = () => (
-  <span
-    onClick={() => history.back()}
-    className={`group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500 cursor-pointer`}
-  >
-    <BackIcon />
-    Go Back
-  </span>
+export const BackLink = ({ to = undefined }: { to?: string }) => (
+  <>
+    {to ? (
+      <Link
+        to={to}
+        className={`group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500 cursor-pointer`}
+      >
+        <BackIcon />
+        Go Back
+      </Link>
+    ) : (
+      <span
+        onClick={() => history.back()}
+        className={`group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500 cursor-pointer`}
+      >
+        <BackIcon />
+        Go Back
+      </span>
+    )}
+  </>
 );

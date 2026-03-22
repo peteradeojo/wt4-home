@@ -1,5 +1,24 @@
+import { BsQrCode } from "react-icons/bs";
 import { Link, Outlet, useMatch } from "react-router";
 import { BackLink } from "~/components/icons";
+
+type TSuiteItem = {
+  text: string;
+  href: string;
+  description: string;
+  icon: React.JSX.Element;
+};
+
+const SuiteItem = ({ config }: { config: TSuiteItem }) => {
+  return (
+    <>
+      <Link to={config.href} className="card">
+        {config.icon}
+        <span className="uppercase font-semibold">{config.text}</span>
+      </Link>
+    </>
+  );
+};
 
 const Suite = () => {
   const match = useMatch("/suite");
@@ -19,15 +38,13 @@ const Suite = () => {
         <section id="suite">
           {match !== null ? (
             <div className="grid gap-9 sm:grid-cols-3 md:grid-cols-6 w-full">
-              {projects.map(({ text, href, description }, i) => (
-                <Link to={href} className="card" key={i}>
-                  {text}
-                </Link>
+              {projects.map((data, i) => (
+                <SuiteItem config={data} key={i} />
               ))}
             </div>
           ) : (
             <>
-              <BackLink />
+              <BackLink to={"/suite"} />
               <Outlet />
             </>
           )}
@@ -43,11 +60,16 @@ export const loader = async () => {
 
 export default Suite;
 
-const projects = [
+const projects: TSuiteItem[] = [
   {
     text: "QR Generator",
     href: "/suite/qr",
     description:
       "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est nisi fuga perspiciatis voluptatum quis nemo itaque, excepturi sapiente accusantium ratione repudiandae fugit impedit blanditiis culpa? Ipsa ex porro cum at.",
+    icon: (
+      <span className="w-full flex items-center justify-center">
+        <BsQrCode className="text-8xl" />
+      </span>
+    ),
   },
 ];
