@@ -1,3 +1,5 @@
+import Redis from "ioredis";
+
 export function debounce(action: Function, wait: number) {
   let timeout: NodeJS.Timeout | undefined;
 
@@ -11,3 +13,5 @@ export function debounce(action: Function, wait: number) {
     }, wait);
   };
 }
+
+export const cache = new Redis(process.env.REDIS_URL!);
