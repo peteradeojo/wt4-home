@@ -1,6 +1,6 @@
 import type { Route } from "../+types/root";
 import { redirect } from "react-router";
-import { cache } from "~/utils";
+import cache from "~/utils/cache";
 
 export const loader = async ({ request, params }: Route.LoaderArgs) => {
   cache.incr("wt4:trip_redirects");
