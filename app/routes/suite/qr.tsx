@@ -9,6 +9,7 @@ const Qr = () => {
   const [code, setCode] = useState<string | undefined>();
   const [lightColor, setLightColor] = useState("#ffffff");
   const [darkColor, setDarkColor] = useState("#000000");
+  const [noBg, setNoBg] = useState(false);
 
   const handleContentUpdate = async () => {
     if (!content || content.trim().length < 1) {
@@ -22,7 +23,7 @@ const Qr = () => {
       type: "image/png",
       color: {
         dark: darkColor, // darkMode ? "#fff" : "#000",
-        light: lightColor, // darkMode ? "#000" : "#fff",
+        light: noBg ? "#FFFFFF00" : lightColor, // darkMode ? "#000" : "#fff",
       },
     });
     setCode(() => code);
@@ -50,7 +51,7 @@ const Qr = () => {
     if (!code) return;
     const a = document.createElement("a");
     a.href = code;
-    a.download = "QRCODE.jpg";
+    a.download = "QRCODE.png";
 
     a.click();
     a.remove();
@@ -61,7 +62,7 @@ const Qr = () => {
 
   useEffect(() => {
     contentUpdated();
-  }, [content, lightColor, darkColor]);
+  }, [content, lightColor, darkColor, noBg]);
 
   return (
     <>
@@ -120,6 +121,16 @@ const Qr = () => {
               >
                 Copy
               </button>
+
+              <label>
+                <input
+                  type="checkbox"
+                  checked={noBg}
+                  onChange={(e) => setNoBg(() => e.target.checked)}
+                  id=""
+                />
+                No Background?
+              </label>
             </div>
           ) : null}
         </div>
