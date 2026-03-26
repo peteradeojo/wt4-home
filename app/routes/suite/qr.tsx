@@ -10,6 +10,7 @@ const Qr = () => {
   const [lightColor, setLightColor] = useState("#ffffff");
   const [darkColor, setDarkColor] = useState("#000000");
   const [noBg, setNoBg] = useState(false);
+  const [usePicker, setUsePicker] = useState(true);
 
   const handleContentUpdate = async () => {
     if (!content || content.trim().length < 1) {
@@ -97,16 +98,53 @@ const Qr = () => {
           {code ? (
             <div className="text-center pt-4 grid gap-4">
               <div>
-                <input
-                  type="color"
-                  value={lightColor}
-                  onChange={(e) => setLightColor(e.target.value)}
-                />
-                <input
-                  type="color"
-                  value={darkColor}
-                  onChange={(e) => setDarkColor(e.target.value)}
-                />
+                {usePicker ? (
+                  <>
+                    <input
+                      type="color"
+                      value={lightColor}
+                      onChange={(e) => setLightColor(e.target.value)}
+                    />
+                    <input
+                      type="color"
+                      value={darkColor}
+                      onChange={(e) => setDarkColor(e.target.value)}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <div className="form-grou">
+                      <label>Background color</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={lightColor}
+                        onChange={(e) => setLightColor(e.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label>Foreground color</label>
+
+                      <input
+                        type="text"
+                        value={darkColor}
+                        className="form-control"
+                        onChange={(e) => setDarkColor(e.target.value)}
+                      />
+                    </div>
+                  </>
+                )}
+
+                <div className="form-group">
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={usePicker}
+                      onChange={(e) => setUsePicker(e.target.checked)}
+                    />{" "}
+                    Use Picker?
+                  </label>
+                </div>
               </div>
 
               <button
