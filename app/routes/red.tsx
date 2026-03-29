@@ -15,7 +15,7 @@ export default function Red() {
 const resources: Resource[] = [
   {
     text: "TRIP Party",
-    href: "https://tix.africa/discover/takeatrip",
+    href: "https://tix.africa/discover/trip",
     icon: <WorldStar />,
     textColor: "text-red-500",
   },
