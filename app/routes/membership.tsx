@@ -19,7 +19,7 @@ export const loader = async ({ request, params }: Route.LoaderArgs) => {
     timestamp: new Date().toISOString(),
   };
   cache.lpush("wt4:interactions", JSON.stringify(event));
-  return redirect("https://tix.africa/discover/trip");
+  return redirect("https://whatthefour.com");
 };
 
 // export default function Membership() {
