@@ -32,7 +32,7 @@ export default function Membership({ actionData }: Route.ComponentProps) {
     <div className="container text-center grid gap-y-8">
       <BackLink label="Home" to="/" />
       <div className="w-full">
-        <img src={target} className="w-30 m-auto" />
+        <img src={target} className="max-w-30 m-auto" />
       </div>
 
       <p>If you're reading this</p>
@@ -42,7 +42,7 @@ export default function Membership({ actionData }: Route.ComponentProps) {
           <input
             type="email"
             name="email"
-            className="p-1 bg-gray-200 dark:bg-gray-800 dark:border-none border-r-none rounded-sm rounded-r-none min-w-100"
+            className="p-1 bg-gray-200 dark:bg-gray-800 dark:border-none border-r-none rounded-sm rounded-r-none sm:w-100"
             placeholder="Your email address"
           />
           <button
@@ -56,7 +56,7 @@ export default function Membership({ actionData }: Route.ComponentProps) {
           <p className="text-green-500 text-sm mt-2">Enlistment successful. We'll be in touch.</p>
         )}
       </Form>
-      <img src={redCamo} className="m-auto" />
+      <img src={redCamo} className="m-auto max-w-full" />
     </div>
   );
 }
