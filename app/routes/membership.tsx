@@ -27,7 +27,7 @@ import { transport } from "~/utils";
 //   return {};
 // };
 
-export default function Membership() {
+export default function Membership({ actionData }: Route.ComponentProps) {
   return (
     <div className="container text-center grid gap-y-8">
       <BackLink label="Home" to="/" />
@@ -52,6 +52,9 @@ export default function Membership() {
             Enlist
           </button>
         </div>
+        {actionData?.accepted && (
+          <p className="text-green-500 text-sm mt-2">Enlistment successful. We'll be in touch.</p>
+        )}
       </Form>
       <img src={redCamo} className="m-auto" />
     </div>
@@ -69,5 +72,5 @@ export async function action({ request }: Route.ActionArgs) {
     from: "RED Militia <internal@whatthefour.com>",
   });
 
-  return r;
+  return { accepted: r.accepted.length > 0 };
 }
