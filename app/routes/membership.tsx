@@ -66,7 +66,7 @@ export async function action({ request }: Route.ActionArgs) {
   const email = formData.get("email");
 
   const r = await transport.sendMail({
-    to: ["adeojopeter@gmail.com", "iamchxrlz.com", "jesutoilugbo@gmail.com"],
+    to: ["adeojopeter@gmail.com", "iamchxrlz@gmail.com", "jesutoilugbo@gmail.com"],
     subject: "New RED militia enlistment",
     html: `<p>New enlistment with email: ${email}</p>`,
     from: "RED Militia <internal@whatthefour.com>",
