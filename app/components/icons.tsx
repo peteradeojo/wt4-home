@@ -81,7 +81,7 @@ export const BackIcon = () => (
   </svg>
 );
 
-export const BackLink = ({ to = undefined }: { to?: string }) => (
+export const BackLink = ({ to = undefined, label = undefined }: { to?: string, label?: string }) => (
   <>
     {to ? (
       <Link
@@ -89,7 +89,7 @@ export const BackLink = ({ to = undefined }: { to?: string }) => (
         className={`group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500 cursor-pointer`}
       >
         <BackIcon />
-        Go Back
+        {label || "Go Back"}
       </Link>
     ) : (
       <span
@@ -97,7 +97,7 @@ export const BackLink = ({ to = undefined }: { to?: string }) => (
         className={`group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500 cursor-pointer`}
       >
         <BackIcon />
-        Go Back
+        {label || "Go Back"}
       </span>
     )}
   </>
