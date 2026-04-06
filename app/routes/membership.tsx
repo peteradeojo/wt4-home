@@ -35,8 +35,7 @@ export default function Membership({ actionData }: Route.ComponentProps) {
         <img src={target} className="max-w-30 m-auto" />
       </div>
 
-      <p>If you're reading this</p>
-      <p>This is your invitation to join the RED militia.</p>
+      <p>Subscribe to get updates on all things <span className="text-red-400 font-semibold">RED</span></p>
       <Form method="post" action="/red/membership" className="m-auto">
         <div className="flex">
           <input
