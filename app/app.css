@@ -13,16 +13,23 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-white dark:bg-gray-950 max-w-full;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
+
+  background: url("/texture.jpeg");
+  background-blend-mode: difference;
+}
+
+main {
+  @apply bg-black/75 min-h-dvh;
 }
 
 @layer components {
   .container {
-    @apply m-auto min-w-full p-4 sm:p-16;
+    @apply m-auto max-w-full p-4 sm:p-16;
   }
   .card {
     @apply p-4 duration-100 rounded-lg dark:bg-gray-800 hover:scale-[105%] grid place-items-center gap-y-2 md:gap-y-4;
@@ -30,5 +37,14 @@ body {
 
   .form-control {
     @apply w-full bg-gray-700 text-white focus:outline-1 outline-amber-50 p-2;
+  }
+
+  .glass-panel {
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(1px) brightness(1.2);
+    @apply rounded-lg hover:scale-110 duration-150;
+  }
+  nav .nav-item {
+    @apply p-4 hover:bg-white/30 duration-150;
   }
 }
