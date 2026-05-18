@@ -22,16 +22,16 @@ export function Welcome() {
 
     {/* <img src={target} alt="" className="max-w-full" /> */}
 
-    <div className="flex justify-center items-center gap-x-8 p-8 px-32 md:h-[800px] overflow-hidden">
-      <Link to={'/'} className="glass-panel p-4 flex flex-col gap-y-4 w-1/3">
+    <div className="flex flex-col md:flex-row justify-center items-center gap-8 p-8 md:px-32 md:h-[800px] overflow-hidden">
+      <Link to={'/'} className="glass-panel p-4 flex flex-col gap-y-4 w-full md:w-1/3">
         {/* <img src={redCamo} /> */}
         <p className="uppercase font-bold text-center py-2 text-2xl">Events</p>
       </Link>
-      <Link to={'/'} className="glass-panel p-4 flex flex-col gap-y-4 w-1/3">
+      <Link to={'/'} className="glass-panel p-4 flex flex-col gap-y-4 w-full md:w-1/3">
         {/* <img src={redCamo} /> */}
         <p className="uppercase font-bold text-center py-2 text-2xl">Fashion</p>
       </Link>
-      <Link to={'/'} className="glass-panel p-4 flex flex-col gap-y-4 w-1/3">
+      <Link to={'/'} className="glass-panel p-4 flex flex-col gap-y-4 w-full md:w-1/3">
         {/* <img src={redCamo} /> */}
         <p className="uppercase font-bold text-center py-2 text-2xl">Music</p>
       </Link>
