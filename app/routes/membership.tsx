@@ -42,7 +42,7 @@ export default function Membership({ actionData }: Route.ComponentProps) {
           <input
             type="email"
             name="email"
-            className="p-1 bg-gray-200 dark:bg-gray-800 dark:border-none border-r-none rounded-sm rounded-r-none sm:w-100"
+            className="p-1 bg-gray-200 dark:bg-white/80 text-black dark:border-none border-r-none rounded-sm rounded-r-none sm:w-100"
             placeholder="Your email address"
           />
           <button

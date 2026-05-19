@@ -8,8 +8,8 @@ export default function Layout() {
             <div className="sticky top-0 z-50">
                 <nav className="flex justify-end text-white">
                     <Link to={'/'} className="nav-item">Home</Link>
-                    <Link to={'/about'} className="nav-item">About</Link>
-                    <Link to={'/join'} className="nav-item">My Account</Link>
+                    {/* <Link to={'/about'} className="nav-item">About</Link> */}
+                    <Link to={'/join'} className="nav-item">Join Us</Link>
                 </nav>
             </div>
             <main className="py-8">
