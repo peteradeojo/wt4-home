@@ -8,7 +8,7 @@ import { transport } from "~/utils";
 export const loader = async ({ request, params }: Route.LoaderArgs) => {
   const url = new URL(request.url);
 
-  if (url.pathname != "/join") {
+  if (url.pathname != "/join" && request.method != "POST") {
     return redirect("/join");
   }
 
@@ -37,7 +37,7 @@ export default function Membership({ actionData }: Route.ComponentProps) {
       </div>
 
       <p>Subscribe to get updates on all things <span className="text-red-400 font-semibold">RED</span></p>
-      <Form method="post" action="/red/membership" className="m-auto">
+      <Form method="post" action="/join" className="m-auto">
         <div className="flex">
           <input
             type="email"
@@ -53,7 +53,7 @@ export default function Membership({ actionData }: Route.ComponentProps) {
           </button>
         </div>
         {actionData?.accepted && (
-          <p className="text-green-500 text-sm mt-2">Enlistment successful. We'll be in touch.</p>
+          <p className="text-white text-lg mt-2">Enlistment successful. We'll be in touch.</p>
         )}
       </Form>
       <img src={redCamo} className="m-auto max-w-full" />
