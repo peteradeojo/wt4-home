@@ -21,10 +21,7 @@ body {
 
   background: url("/texture.jpeg");
   background-blend-mode: difference;
-}
-
-main {
-  @apply bg-black/75 min-h-dvh;
+  background-attachment: fixed;
 }
 
 @layer components {

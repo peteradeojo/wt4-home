@@ -1,36 +1,37 @@
 import type { Route } from "../+types/root";
-// import cache from "~/utils/cache";
-import target from "~/assets/target.svg";
+import cache from "~/utils/cache";
+import target from "~/assets/target-removebg.png";
 import redCamo from "~/assets/red-camo (1).png";
-import { BackLink } from "~/components/icons";
-import { Form } from "react-router";
+import { Form, redirect } from "react-router";
 import { transport } from "~/utils";
 
-// export const loader = async ({ request, params }: Route.LoaderArgs) => {
-// cache.incr("wt4:trip_redirects");
+export const loader = async ({ request, params }: Route.LoaderArgs) => {
+  const url = new URL(request.url);
 
-// const event = {
-//   ip: (
-//     request.headers.get("x-forwarded-for") ?? request.headers.get("x-real-ip")
-//   )
-//     ?.split(",")[0]
-//     .trim(),
-//   userAgent: request.headers.get("user-agent"),
-//   country: request.headers.get("x-vercel-ip-country"),
-//   city: request.headers.get("x-vercel-ip-city"),
-//   pathname: new URL(request.url).pathname,
-//   referrer: request.headers.get("referer"),
-//   timestamp: new Date().toISOString(),
-// };
-// cache.lpush("wt4:interactions", JSON.stringify(event));
-// return { event };
-//   return {};
-// };
+  if (url.pathname != "/join") {
+    return redirect("/join");
+  }
+
+  const event = {
+    ip: (
+      request.headers.get("x-forwarded-for") ?? request.headers.get("x-real-ip")
+    )
+      ?.split(",")[0]
+      .trim(),
+    userAgent: request.headers.get("user-agent"),
+    country: request.headers.get("x-vercel-ip-country"),
+    city: request.headers.get("x-vercel-ip-city"),
+    pathname: new URL(request.url).pathname,
+    referrer: request.headers.get("referer"),
+    timestamp: new Date().toISOString(),
+  };
+  cache.lpush("wt4:interactions", JSON.stringify(event));
+  return { event };
+};
 
 export default function Membership({ actionData }: Route.ComponentProps) {
   return (
     <div className="container text-center grid gap-y-8">
-      <BackLink label="Home" to="/" />
       <div className="w-full">
         <img src={target} className="max-w-30 m-auto" />
       </div>
