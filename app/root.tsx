@@ -9,6 +9,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import target from "~/assets/target-removebg.png";
 
 export const links: Route.LinksFunction = () => [
 ];

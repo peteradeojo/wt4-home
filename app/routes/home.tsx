@@ -6,8 +6,8 @@ import About from "~/routes/about";
 
 export function meta({ }: Route.MetaArgs) {
   return [
-    { title: "Whatthefour.com" },
-    { name: "description", content: "Whatthefour.com" },
+    { title: "RED" },
+    { name: "description", content: "RED, RISK EVEN DEATH, RED is a lifestyle brand that highlights the dog eat dog and survival nature of society. Focusing on art as a medium of escaping and overcoming the construct . The brand carries a serious energy, expressed through raw and grungy imagery and design language." },
   ];
 }
 
